@@ -18,7 +18,7 @@ URL = "https://github.com/ravi-ojha/py-unique-names-generator"
 EMAIL = "ivarojha@gmail.com"
 AUTHOR = "Ravi Ojha"
 REQUIRES_PYTHON = ">=3.6.0"
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 
 REQUIRED = []
 
