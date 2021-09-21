@@ -2,30 +2,63 @@
 Generate unique and memorable name strings
 
 
-# Local development
+## Prerequisites
 
-## Pre-requisites
+Python 3.6 or greater.
 
-I'm using [`pyenv`](https://github.com/pyenv/pyenv-virtualenv) to easily manage python versions. Some of the following commands use `pyenv`.
-Use [pyenv-installer](https://github.com/pyenv/pyenv-installer) for easy installation. Then add pyenv-virtualenv plugin to it.
+## Installation
 
-### Configure local development setup
+```sh
+$ pip install unique-names-generator
+```
 
- - Install and activate python 3.8.1 in the root directory
-    - `pyenv install 3.8.1`
-    - `pyenv virtualenv 3.8.1 uniquenames`
-    - `pyenv local uniquenames`
+## Usage
 
- - Install precommit hook
-    - `pre-commit install`
+```python
+In [1]: from unique_names_generator import get_random_name
 
-You're all set to hack!
+In [2]: get_random_name()
+Out[2]: 'Pink Dragon'
 
-Before making changes, let's ensure tests run successfully on local.
+```
 
-### Running Tests
+### Parameters
 
- - Run all tests with coverage
-    - `coverage run -m pytest -v`
- - Show report in terminal
-    - `coverage report -m`
+#### `combo` - List of lists
+
+The package comes with a bunch of random names as lists. By default, we use a `color` and `animal` to generate a random name.
+Other lists are `ADJECTIVES`, `ANIMALS`, `COLORS`, `COUNTRIES`, `LANGUAGES`, `NAMES`, `STAR_WARS`.
+
+```python
+In [1]: from unique_names_generator import get_random_name
+In [2]: from unique_names_generator.data import ADJECTIVES, STAR_WARS
+
+In [3]: get_random_name(combo=[ADJECTIVES, STAR_WARS])
+Out[3]: 'Furious Yoda'
+
+```
+
+#### `separator` - A string, default is blank space ` `
+
+
+```python
+In [1]: from unique_names_generator import get_random_name
+In [2]: from unique_names_generator.data import ADJECTIVES, NAMES
+
+In [69]: get_random_name(combo=[ADJECTIVES, NAMES], separator="_")
+Out[69]: 'Fun_Antonie'
+```
+
+#### `style` - A string, one of capital|lowercase|uppercase.
+
+
+```python
+In [1]: from unique_names_generator import get_random_name
+In [2]: from unique_names_generator.data import ADJECTIVES, NAMES
+
+In [3]: get_random_name(separator="-", style="lowercase")
+Out[3]: 'crimson-cat'
+
+```
+
+And, you can pass your own list of words. But let's face it, then this package would just be a function which randomly chooses a word from a list of strings. So its better to keep adding to the list here or fork it for your own use.
